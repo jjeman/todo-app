@@ -51,7 +51,8 @@ function App() {
       </div>
 
       <p className="counter">
-        {tasks.filter((t) => !t.done).length} tasks remaining
+        {tasks.filter((t) => !t.done).length} tasks 
+        
       </p>
 
       <ul className="task-list">
@@ -64,9 +65,13 @@ function App() {
           />
         ))}
       </ul>
+      {visibleTasks.length === 0 && (
+  <p className="empty">Nothing here yet.</p>
+)}
     </div>
   </div>
 );
 }
+
 
 export default App;
