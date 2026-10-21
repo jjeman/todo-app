@@ -4,6 +4,7 @@
   --text-main: #500724;
   --accent: #be185d;
   --accent-dark: #9d174d;
+  --matcha: #7a9a5b;
 }
 button,
 input {
@@ -22,7 +23,7 @@ input {
   background: var(--bg-card);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 10px 30px rgb(223, 91, 133);
+  box-shadow: 0 10px 30px rgba(120, 150, 90, 0.35);
 }
 
 .title {

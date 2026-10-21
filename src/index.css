@@ -6,6 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Poppins", system-ui, sans-serif;
-  background: linear-gradient(135deg, #1e1b4b, #0f172a);
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #d4e8c2, #b7d4a0);
+  background-attachment: fixed;
+  color: #3b4a2f;
 }
