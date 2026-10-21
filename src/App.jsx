@@ -16,12 +16,12 @@ function App() {
   }, [tasks]);
 
   function addTask() {
-  if (text.trim() === "") return;
-  const newTask = { id: Date.now(), title: text, done: false, dueDate };
-  setTasks([...tasks, newTask]);
-  setText("");
-  setDueDate("");
-}
+    if (text.trim() === "") return;
+    const newTask = { id: Date.now(), title: text, done: false, dueDate };
+    setTasks([...tasks, newTask]);
+    setText("");
+    setDueDate("");
+  }
 
   function toggleTask(id) {
     setTasks(
@@ -57,25 +57,27 @@ function App() {
         <h1 className="title">My To-Do List</h1>
 
         <div className="add-form">
-          <input
-            className="task-input"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && addTask()}
-            placeholder="Add a task..."
-            type="text"
-          />
-          
-          <input
-            type="date"
-            className="date-input"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-          <button className="add-btn" onClick={addTask}>
-            Add
-          </button>
-        </div>
+  <input
+    className="task-input"
+    type="text"
+    value={text}
+    onChange={(e) => setText(e.target.value)}
+    onKeyDown={(e) => e.key === "Enter" && addTask()}
+    placeholder="Add a task..."
+  />
+  <label className="date-field">
+    <span className="date-label">Due date (optional)</span>
+    <input
+      type="date"
+      className="date-input"
+      value={dueDate}
+      onChange={(e) => setDueDate(e.target.value)}
+    />
+  </label>
+  <button className="add-btn" onClick={addTask}>
+    Add
+  </button>
+</div>
 
         <p className="counter">
           {remaining} {remaining === 1 ? "task" : "tasks"} remaining

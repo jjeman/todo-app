@@ -5,6 +5,10 @@
   --accent: #be185d;
   --accent-dark: #9d174d;
 }
+button,
+input {
+  font-family: inherit;
+}
 
 /* ---------- Layout ---------- */
 
@@ -25,6 +29,8 @@
   margin: 0 0 1.25rem;
   text-align: center;
   font-size: 2rem;
+  font-family: "Alata", sans-serif;
+  font-weight: 400;
   color: var(--text-main);
 }
 
@@ -60,7 +66,7 @@
 }
 
 .date-field {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -73,10 +79,12 @@
   color: var(--text-main);
 }
 
+
 .date-input {
   width: 100%;
   min-width: 0;
-  padding: 0.7rem 0.6rem;
+  height: 3rem;
+  padding: 0 0.6rem;
   font-size: 0.9rem;
   font-family: inherit;
   color: var(--text-main);
@@ -93,7 +101,8 @@
 
 .add-btn {
   flex: 0 0 auto;
-  padding: 0.7rem 1.25rem;
+  height: 3rem;
+  padding: 0 1.25rem;
   font-size: 1rem;
   font-weight: 600;
   color: white;
@@ -239,9 +248,7 @@
 }
 
 /* ---------- Phone tweak: stops iPhone zoom on focus ---------- */
-
 .task-input,
-.date-input,
 .edit-input {
   font-size: 16px;
 }
