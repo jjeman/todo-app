@@ -9,17 +9,19 @@ function App() {
   });
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
+  const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   function addTask() {
-    if (text.trim() === "") return;
-    const newTask = { id: Date.now(), title: text, done: false };
-    setTasks([...tasks, newTask]);
-    setText("");
-  }
+  if (text.trim() === "") return;
+  const newTask = { id: Date.now(), title: text, done: false, dueDate };
+  setTasks([...tasks, newTask]);
+  setText("");
+  setDueDate("");
+}
 
   function toggleTask(id) {
     setTasks(
@@ -61,6 +63,14 @@ function App() {
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && addTask()}
             placeholder="Add a task..."
+            type="text"
+          />
+          
+          <input
+            type="date"
+            className="date-input"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
           />
           <button className="add-btn" onClick={addTask}>
             Add
@@ -102,5 +112,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

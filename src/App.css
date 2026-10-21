@@ -6,13 +6,13 @@
   --accent-dark: #9d174d;
 }
 
+/* ---------- Layout ---------- */
+
 .app {
   max-width: 480px;
   margin: 3rem auto;
   padding: 0 1rem;
 }
-
-
 
 .card {
   background: var(--bg-card);
@@ -21,7 +21,6 @@
   box-shadow: 0 10px 30px rgb(223, 91, 133);
 }
 
-
 .title {
   margin: 0 0 1.25rem;
   text-align: center;
@@ -29,13 +28,18 @@
   color: var(--text-main);
 }
 
+/* ---------- Add form ---------- */
+
 .add-form {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
   gap: 0.5rem;
 }
 
 .task-input {
-  flex: 1;
+  flex: 1 1 100%;
+  min-width: 0;
   padding: 0.7rem 1rem;
   font-size: 1rem;
   color: var(--text-main);
@@ -46,16 +50,50 @@
   transition: border-color 0.2s;
 }
 
+.task-input::placeholder {
+  color: var(--accent-dark);
+  opacity: 0.6;
+}
+
 .task-input:focus {
   border-color: var(--accent);
 }
 
-.task-input:focus {
-  border-color: #be185d;
+.date-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.date-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.date-input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem 0.6rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--bg-item);
+  border: 2px solid var(--accent-dark);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.date-input:focus {
+  border-color: var(--accent);
 }
 
 .add-btn {
-  padding: 0 1.25rem;
+  flex: 0 0 auto;
+  padding: 0.7rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
   color: white;
@@ -70,84 +108,12 @@
   background: var(--accent-dark);
 }
 
+/* ---------- Counter and filters ---------- */
+
 .counter {
   margin: 1rem 0 0.75rem;
   font-size: 0.9rem;
   color: var(--text-main);
-}
-
-.task-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.task-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 0.9rem;
-  color: var(--text-main);
-  background: var(--bg-item);
-  border-radius: 10px;
-}
-
-.task-item input[type="checkbox"] {
-  width: 1.2rem;
-  height: 1.2rem;
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.task-title {
-  flex: 1;
-  text-align: left;
-}
-
-.task-title.done {
-  color: var(--accent-dark);
-  opacity: 0.6;
-  text-decoration: line-through;
-}
-
-.delete-btn {
-  padding: 0.35rem 0.7rem;
-  font-size: 0.85rem;
-  color: #be123c;
-  background: transparent;
-  border: 1px solid #be123c;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-.delete-btn:hover {
-  color: white;
-  background: #be123c;
-}
-
-.empty {
-  text-align: center;
-  color: var(--text-main);
-  opacity: 0.7;
-}
-
-.edit-input {
-  flex: 1;
-  padding: 0.3rem 0.5rem;
-  font-size: 1rem;
-  color: var(--text-main);
-  background: white;
-  border: 2px solid var(--accent);
-  border-radius: 6px;
-  outline: none;
-}
-
-.task-title {
-  cursor: text;
 }
 
 .filters {
@@ -181,4 +147,101 @@
 .filter-btn.active {
   color: white;
   background: var(--accent);
+}
+
+/* ---------- Task list ---------- */
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--text-main);
+  background: var(--bg-item);
+  border-radius: 10px;
+}
+
+.task-item input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-title {
+  flex: 1;
+  text-align: left;
+  cursor: text;
+}
+
+.task-title.done {
+  color: var(--accent-dark);
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  color: var(--text-main);
+  background: white;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  outline: none;
+}
+
+.due {
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--accent-dark);
+  background: rgba(190, 24, 93, 0.12);
+  border-radius: 999px;
+}
+
+.due.overdue {
+  color: white;
+  background: #be123c;
+}
+
+.delete-btn {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  color: #be123c;
+  background: transparent;
+  border: 1px solid #be123c;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+  color: white;
+  background: #be123c;
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-main);
+  opacity: 0.7;
+}
+
+/* ---------- Phone tweak: stops iPhone zoom on focus ---------- */
+
+.task-input,
+.date-input,
+.edit-input {
+  font-size: 16px;
 }
